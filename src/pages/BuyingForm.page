@@ -1,0 +1,42 @@
+<apex:page doctype="HTML-5.0" controller="BuyingFormController" sidebar="false">
+  <apex:form >
+  
+    <apex:panelGrid columns="1" title="Buying Form">
+     
+      <apex:pageBlock >
+        <apex:pageBlockSection >
+          <apex:panelGrid columns="2" >
+            <apex:image value="data:image;base64,{!Image}" height="100" width="100" />
+            <apex:pageBlockSection columns="1" >
+              <apex:outputText style="font-weight: bold; width: 300px" >{!product.Title__c}</apex:outputText>
+             
+              <apex:outputText style="display: block; width: 600px;" value="{!product.Description__c}"/ > 
+           
+              <apex:outputText label="Cost" >{!product.Cost__c}</apex:outputText>
+              <apex:outputText label="Discount" >{!discount}</apex:outputText>
+            </apex:pageBlockSection>
+               <apex:commandButton value="Return" action="{!returnToShop}"/>
+            <apex:commandButton value="Buy" action="{!buy}"/>
+          </apex:panelGrid>
+        </apex:pageBlockSection>
+         <apex:outputPanel style="padding: 10px" rendered="{!dicountChecker}">
+            <label>Promo Code:&nbsp;<apex:inputText value="{!promoCode}">
+            <apex:actionSupport event="onchange" action="{!discount}"/>
+            </apex:inputText>
+            </label>
+        </apex:outputPanel>
+      </apex:pageBlock>
+       <apex:pageBlock title="MAKE ORDER" >
+        <apex:pageMessages id="errMsg" />
+        <apex:pageBlockSection columns="1">
+          <apex:input value="{!emailString}" label="Email" html-placeholder="example@gmail.com" type="email">
+            <apex:actionSupport event="onchange" action="{!searchContact}"/>
+          </apex:input>
+          <apex:inputText value="{!contact.Contact_Name__c}" label="Name"/>
+          <apex:inputText value="{!contact.Address__c}" label="Address"/>
+          <apex:inputText value="{!contact.Phone}" label="Phone"/>
+        </apex:pageBlockSection>
+              </apex:pageBlock>
+            </apex:panelGrid>
+          </apex:form>
+        </apex:page>

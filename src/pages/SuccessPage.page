@@ -1,0 +1,12 @@
+<apex:page controller="SuccessPageController" sidebar="false" action="{!sendAllMessages}" >
+  <apex:form >
+    <apex:commandLink value="to shopping" action="{!returnToShop}" style="margin-right: 10px;"/>
+    <apex:pageBlock >
+      <apex:pageBlockSection columns="1">
+        <apex:outputText >Congratulationt {!contact.Contact_Name__c} you are buying - {!Product.Name__c} product !!!  </apex:outputText>
+        <apex:outputText >Your discount is - {!Product.SoldDiscount__c} !!!  </apex:outputText>
+        <apex:outputText >We are sending email to: {!contact.Email} </apex:outputText>
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>
