@@ -19,6 +19,5 @@ global class BatchCheckDiscount implements Database.Batchable<sObject> {
     }
 
     global void finish(Database.BatchableContext BC) {
-
     }
 }

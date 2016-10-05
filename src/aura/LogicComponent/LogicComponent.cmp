@@ -1,0 +1,13 @@
+<aura:component >
+    <aura:attribute name="firstName" type="String" default="" />
+    <aura:attribute name="lastName" type="String" default="" />
+    <aura:attribute name="result" type="String" default="" />
+
+    <ui:inputText label="Enter Your First Name" value="{!v.firstName}" />
+    <ui:inputText label="Enter Your Last Name" value="{!v.lastName}" />
+    <br/>
+    <ui:button label="Submit" press="{!c.doSubmit}" />
+    <br/>
+    <ui:outputText value="{!v.result}" />
+
+</aura:component>
