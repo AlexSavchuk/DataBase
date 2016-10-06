@@ -47,7 +47,6 @@ public class SuccessPageControllerTest {
         Contact con = [SELECT Id, Contact_Name__c, Email FROM Contact WHERE Contact_Name__c = 'testContact' LIMIT 1];
         System.currentPageReference().getParameters().put('Id', prd.Id);
         SuccessPageController cnt = new SuccessPageController();
-
         cnt.sendEmailMessage();
 
      }
