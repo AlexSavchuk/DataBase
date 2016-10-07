@@ -3,20 +3,20 @@ public with sharing class SuccessPageController {
     public Id posId { get; set; }
     public Contact contact { get; set; }
     public User user { get; set; }
-    public Id recordTypeSoldId { 
+    public Id recordTypeSoldId {
         get {
             if (recordTypeSoldId == NULL) {
                 recordTypeSoldId = Schema.SObjectType.Product__c.getRecordTypeInfosByName().get('Sold').getRecordTypeId();
             }
-                return recordTypeSoldId ;
-        } 
-        set;
+            return recordTypeSoldId ;
         }
+        set;
+    }
 
     public SuccessPageController() {
         posId = System.currentPagereference().getParameters().get('Id');
-        product = [SELECT Id, Name, Name__c, Contact__c, SoldDiscount__c 
-                   FROM Product__c 
+        product = [SELECT Id, Name, Name__c, Contact__c, SoldDiscount__c
+                   FROM Product__c
                    WHERE Id = :posId AND recordTypeId = :recordTypeSoldId];
         contact = [SELECT Id, Name, Contact_Name__c, Email FROM Contact WHERE Id = :product.Contact__c];
         user = [SELECT Id, Name FROM User WHERE ContactId = :contact.Id];
@@ -60,6 +60,6 @@ public with sharing class SuccessPageController {
     public PageReference returnToShop() {
         PageReference openVfpage = Page.ProductShop;
         openVfpage.setRedirect(true);
-        return openvfpage; 
+        return openvfpage;
     }
 }
