@@ -1,7 +1,7 @@
 global class BatchCheckDiscount implements Database.Batchable<sObject> {
 
     global Database.QueryLocator start(Database.BatchableContext BC) {
-         String query = 'SELECT Id, Name, Start_Date__c, End_Date__c, Status__c FROM Discount__c';
+        String query = 'SELECT Id, Name, Start_Date__c, End_Date__c, Status__c FROM Discount__c';
         return Database.getQueryLocator(query);
     }
 
